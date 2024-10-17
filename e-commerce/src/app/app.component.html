@@ -1,0 +1,15 @@
+<div *ngIf="isAdmin()">
+    <nav class="admin-navbar">
+        <div class="navbar-title" routerLink="/admin">ShopNow</div>
+        <div class="navbar-buttons">
+          <button class="btn register-btn" routerLink="/admin/products">Products</button>
+          <button class="btn register-btn" routerLink="/admin/categorys">Categories</button>
+          <button class="btn register-btn" routerLink="/admin/orders">Orders</button>
+          <button class="btn register-btn" routerLink="/admin/users">Users</button>
+          <!-- <button class="btn register-btn" routerLink="/admin/payments">Payments</button> -->
+          <button class="btn logout-btn" (click)="logOut()">Logout</button>
+        </div>
+    </nav>
+</div>
+
+<router-outlet></router-outlet>

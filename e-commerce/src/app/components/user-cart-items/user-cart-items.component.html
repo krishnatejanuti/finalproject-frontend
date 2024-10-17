@@ -1,0 +1,59 @@
+<!-- <div class="cart-container">
+    <h2 class="cart-title">Your Cart</h2>
+  
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of cartItems.items">
+        <img class="product-image" [src]="item.imageUrl" alt="Product Image">
+        <div class="product-details">
+          <h3 class="product-title">Product ID: {{ item.productId }}</h3>
+          <p class="product-quantity">Quantity: {{ item.quantity }}</p>
+          <p class="product-price">Price: ${{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="cart-total">
+      <p>Total Amount: <strong>${{ cartItems.totalAmount }}</strong></p>
+    </div>
+  </div> -->
+
+<h2 class="legendary-title">My Cart</h2>
+<div class="cart-info">
+  <p class="legendary-total-items">Total Items: <span style="color:red;">{{getTotalQuantity()}}</span></p>
+  <!-- <p class="legendary-total-items">Cart Total: <span style="color:red">{{overallTotalPrice | currency:'INR'}}</span></p>   -->
+</div>
+<!-- <div *ngIf="userCartItems.length > 0; else emptyCart"> -->
+<div>
+<div class="cart-container">
+  <div class="cart-item" *ngFor="let item of userCartItems.items">
+    <img class="product-image" src="{{item.imageUrl}}" alt="product image">
+    <div class="product-info">
+      <!-- <h3 class="product-name">{{item.productName}}</h3> -->
+      <h4 class="product-price">{{item.price | currency:'INR'}}</h4>
+      <h3 class="quantity-label">Quantity</h3>
+      <div class="quantity-control">
+        <button class="quantity-button" (click)="decreaseQuantity(item)">-</button>
+        <span class="quantity-display">{{item.quantity}}</span>
+        <button class="quantity-button" (click)="increaseQuantity(item)">+</button>
+      </div>
+      <p class="total-price">Total Price: {{item.totalPrice | currency:'INR'}}</p>
+      <!-- <button class="remove-btn" (click)="removeFromCart(item.cartID)">Remove from Cart</button> -->
+      <button class="remove-btn">Remove from Cart</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- <ng-template #emptyCart>
+  <div class="empty-cart-container">
+    <div class="empty-cart-icon">
+      <i class="fa fa-shopping-cart"></i>
+    </div>
+    <div class="empty-cart-text">
+      <p>Your cart is empty.</p>
+      <p>Add some items to the cart to view them here!</p>
+      <a [routerLink]="['/customer',userID]" class="empty-cart-link">Browse Products</a>
+    </div>
+  </div>
+</ng-template> -->
+  

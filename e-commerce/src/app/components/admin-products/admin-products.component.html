@@ -1,0 +1,150 @@
+<!-- <div class="container">
+    <h2>Product Management</h2>
+  
+    <div class="form-container">
+      <form (submit)="onSubmit()">
+        <label for="productName">Product Name:</label>
+        <input type="text" [(ngModel)]="product.productName" name="productName" required />
+  
+        <label for="productDescription">Description:</label>
+        <input type="text" [(ngModel)]="product.productDescription" name="productDescription" required />
+  
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" [(ngModel)]="product.imageUrl" name="imageUrl" required />
+  
+        <label for="price">Price:</label>
+        <input type="number" [(ngModel)]="product.price" name="price" required />
+  
+        <label for="discount">Discount:</label>
+        <input type="number" [(ngModel)]="product.discount" name="discount" required />
+  
+        <label for="brand">Brand:</label>
+        <input type="text" [(ngModel)]="product.brand" name="brand" required />
+  
+        <label for="rating">Rating:</label>
+        <input type="number" [(ngModel)]="product.rating" step="0.1" name="rating" required />
+  
+        <label for="categoryIds">Category IDs (comma-separated):</label>
+        <input type="text" [(ngModel)]="product.categoryIds" name="categoryIds" required />
+  
+        <button type="submit" *ngIf="!editMode">Add Product</button>
+        <button type="submit" *ngIf="editMode">Update Product</button>
+      </form>
+    </div>
+  
+    <div class="product-list">
+      <h3>Products</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.productName }}</td>
+            <td>{{ product.productDescription }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button (click)="editProduct(product)">Edit</button>
+              <button (click)="deleteProduct(product.productId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+   -->
+<div class="container">
+    <h2 class="header">Product Management</h2>
+  
+    <!-- Add Product Button -->
+     <div style="text-align: center;">
+        <button class="add-btn" (click)="showForm()">Add Product</button>
+     </div>
+    
+  
+    <!-- Product Form -->
+    <div class="form-container" *ngIf="formVisible">
+      <form (submit)="onSubmit()" class="legendary-form">
+        <div class="form-group">
+          <label for="productName">Product Name:</label>
+          <input type="text" [(ngModel)]="product.productName" name="productName" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="productDescription">Description:</label>
+          <textarea [(ngModel)]="product.productDescription" name="productDescription" required></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="imageUrl">Image URL:</label>
+          <input type="text" [(ngModel)]="product.imageUrl" name="imageUrl" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" [(ngModel)]="product.price" name="price" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="discount">Discount:</label>
+          <input type="number" [(ngModel)]="product.discount" name="discount" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="brand">Brand:</label>
+          <input type="text" [(ngModel)]="product.brand" name="brand" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="rating">Rating:</label>
+          <input type="number" [(ngModel)]="product.rating" step="0.1" name="rating" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="categoryIds">Category IDs (comma-separated):</label>
+          <input type="text" [(ngModel)]="product.categoryIds" name="categoryIds" required />
+        </div>
+  
+        <div class="form-group button-group">
+          <button type="submit" class="submit-btn" *ngIf="!editMode">Add Product</button>
+          <button type="submit" class="submit-btn" *ngIf="editMode">Update Product</button>
+          <button type="button" class="cancel-btn" (click)="cancelForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Product List -->
+    <div class="product-list">
+      <!-- <h3>Products</h3> -->
+      <table>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.productId }}</td>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.productDescription }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button (click)="editProduct(product)" class="edit-btn">Edit</button>
+              <button (click)="deleteProduct(product.productId)" class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+   
+  

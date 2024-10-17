@@ -1,0 +1,40 @@
+.admin-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: navy;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .navbar-buttons .btn,.home-btn{
+    color: white;
+    background-color: #28a745;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative; /* Make the button a positioning context for the cart count */
+  }
+  
+  .navbar-buttons .btn:hover,.home-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .navbar-buttons .logout-btn {
+  background-color: #ff0000;
+  }
+  

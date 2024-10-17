@@ -1,0 +1,216 @@
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+
+button {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 69, 58, 0.6);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 10px rgba(255, 69, 58, 0.5);
+}
+
+
+.users-title {
+    font-size: 36px;
+    color: #ff4b2b;
+    text-shadow: 1px 1px 5px rgba(255, 75, 43, 0.7);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+.user-container {
+    background: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.user-container:hover {
+    background: #333;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+
+.user-container span {
+    color: #ff4b2b;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.user-container p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.user-container p:first-child {
+    font-weight: 600;
+    color: #f4f4f4;
+}
+
+.user-container p:nth-child(2) {
+    color: #b3b3b3;
+}
+
+.user-container p:nth-child(3) {
+    color: #ccc;
+}
+
+.user-container p:nth-child(4) {
+    color: #999;
+}
+
+
+@media (max-width: 768px) {
+    .user-container {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+} */
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header/Title */
+.users-title {
+    font-size: 2.8rem;
+    color: #333;
+    text-shadow: 1px 1px 5px rgba(255, 75, 43, 0.7);
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.users-title::after {
+    content: '';
+    width: 150px;
+    height: 3px;
+    background-color: #28a745;
+    display: block;
+    margin: 10px auto;
+    border-radius: 3px;
+}
+
+/* User Container */
+.user-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background-color: #333;
+}
+
+/* User Details */
+.user-container span {
+    color: #ff4b2b;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.user-container p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.user-container p:first-child {
+    font-weight: 600;
+    color: #f4f4f4;
+}
+
+.user-container p:nth-child(2) {
+    color: #b3b3b3;
+}
+
+.user-container p:nth-child(3) {
+    color: #ccc;
+}
+
+.user-container p:nth-child(4) {
+    color: #999;
+}
+
+/* Button Styles */
+button {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 69, 58, 0.5);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 10px rgba(255, 69, 58, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-container {
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .users-title {
+        font-size: 2rem;
+    }
+}

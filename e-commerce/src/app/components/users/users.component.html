@@ -1,0 +1,12 @@
+<div style="padding-top: 70px;">
+    <h1 class="users-title">Users</h1>
+
+    <div *ngFor="let user of users" class="user-container">
+        <div>
+            <span style="color:blueviolet;font-weight: 600;">Username : {{user.userName}}</span>
+        </div>
+        <p>Email : {{user.email}}</p>
+        <p>Address : {{user.address}}</p>
+        <p>Phone Number : {{user.phoneNumber}}</p>
+    </div>
+</div>

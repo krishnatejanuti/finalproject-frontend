@@ -1,0 +1,31 @@
+<header>
+  <div class="header-bar">
+    <div class="logo">
+      SHOP NOW
+    </div>
+    <div class="auth-links">
+      <a routerLink="/register">Register</a>
+    </div>
+  </div>
+</header>
+<div class="image">
+<div class="background-container">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" formControlName="userName" placeholder="Enter your username"
+          class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password"
+          class="form-control" />
+      </div>
+      <button type="submit" class="btn" [disabled]="loginForm.invalid">Login</button>
+      <p style="text-align: center;"> <a routerLink="/register">(Do not have an account? Register)</a></p>
+    </form>
+  </div>
+</div>
+</div>

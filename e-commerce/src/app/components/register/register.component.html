@@ -1,0 +1,52 @@
+<div style="padding-top:50px;">
+<header>
+  <div class="header-bar">
+    <div class="logo">
+      SHOP NOW
+    </div>
+    <div class="auth-links">
+      <a routerLink="/login">Login</a>
+      <!-- <a href="/register">Register</a> -->
+    </div>
+  </div>
+</header>
+<div class="image">
+<div class="background-container">
+  <div class="register-container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" formControlName="userName" placeholder="Enter your username"
+          class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password"
+          class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter your phone number"
+          class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" formControlName="address" placeholder="Enter your Address"
+          class="form-control" />
+      </div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+      <p style="text-align: center;"> <a routerLink="/login">(Already have an account? Login)</a></p>
+    </form>
+  </div>
+</div>
+</div>
+</div>

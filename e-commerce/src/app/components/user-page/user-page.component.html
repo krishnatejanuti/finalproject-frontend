@@ -1,0 +1,52 @@
+<div style="padding-top:70px"></div>
+    <!-- Search and Category Section -->
+    <nav class="navbar">
+      <div class="navbar-title">SHOP NOW</div>
+      <div class="navbar-search">
+        <input type="text" placeholder="Search Products..." (input)="onSearch($event)">
+      </div>
+      <div class="navbar-buttons">
+        <!-- <button class="btn login-btn" routerLink="/login">Login</button>
+        <button class="btn register-btn" routerLink="/register">Register</button> -->
+        <!-- <button class="btn logOut-btn" routerLink="/logout">Logout</button> -->
+        <button class="btn logout" *ngIf="userID" (click)="logOut()">
+          Logout
+       </button>
+       <button class="cartlogo-btn" *ngIf="userID" [routerLink]="['/user/cartItems/',userID]">
+        <i class="fa fa-shopping-cart"></i><span class="cartlogo-count">{{getTotalQuantity()}}</span>
+      </button>
+      </div>
+    </nav>
+  
+    <!-- Category Buttons -->
+    <div class="category-buttons">
+      <button class="btn category-btn" (click)="filterProductsByCategory(0)">All</button>
+      <button class="btn category-btn" (click)="filterProductsByCategory(1)">Shirts</button>
+      <button class="btn category-btn" (click)="filterProductsByCategory(2)">Trousers</button>
+      <button class="btn category-btn" (click)="filterProductsByCategory(3)">Jackets</button>
+      <button class="btn category-btn" (click)="filterProductsByCategory(4)">Mobiles</button>
+      <button class="btn category-btn" (click)="filterProductsByCategory(5)">Laptops</button>
+    </div>
+  
+  
+    <!-- Product Listing -->
+    <div *ngIf="filteredProducts && filteredProducts.length > 0; else noProducts" class="products-container">
+      <a *ngFor="let product of filteredProducts" class="product-container" [routerLink]="['/product', product.productId]">
+        <img src="{{product.imageUrl}}" alt="">
+        <p class="product-name">{{product.productName}}</p>
+        <!-- <p class="product-price">{{product.price | currency:'INR'}}</p> -->
+        <p *ngIf="product.discount == 0" class="product-price-with-zeroDisc">{{product.price| currency:'INR'}}</p>
+        <div *ngIf="product.discount != 0">
+          <p class="product-price">{{product.price| currency:'INR'}}</p>
+          <p class="discounted-price">Offer Price : {{product.price - product.discount | currency:'INR'}}</p>
+        </div>
+      </a>
+    </div>
+  
+    <!-- No Products Found Message -->
+    <ng-template #noProducts>
+      <div class="no-products">
+        <p>No products found.</p>
+      </div>
+    </ng-template>
+  <!-- </div> -->

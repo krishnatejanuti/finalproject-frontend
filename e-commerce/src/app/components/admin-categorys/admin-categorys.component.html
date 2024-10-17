@@ -1,0 +1,60 @@
+<div class="container">
+    <h2 class="header">Category Management</h2>
+  
+    <!-- Add Category Button -->
+    <div style="text-align: center;">
+      <button class="add-btn" (click)="showForm()">Add Category</button>
+    </div>
+  
+    <!-- Category Form -->
+    <div class="form-container" *ngIf="formVisible">
+      <form (submit)="onSubmit()" class="legendary-form">
+        <div class="form-group">
+          <label for="categoryName">Category Name:</label>
+          <input type="text" [(ngModel)]="category.categoryName" name="categoryName" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea [(ngModel)]="category.description" name="description" required></textarea>
+        </div>
+  
+        <!-- <div class="form-group">
+          <label for="productIds">Product IDs (comma-separated):</label>
+          <input type="text" [(ngModel)]="category.productIds" name="productIds" required />
+        </div> -->
+  
+        <div class="form-group button-group">
+          <button type="submit" class="submit-btn" *ngIf="!editMode">Add Category</button>
+          <button type="submit" class="submit-btn" *ngIf="editMode">Update Category</button>
+          <button type="button" class="cancel-btn" (click)="cancelForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Category List -->
+    <div class="category-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categorys">
+            <td>{{ category.categoryId }}</td>
+            <td>{{ category.categoryName }}</td>
+            <td>{{ category.description }}</td>
+            <td>
+              <button (click)="editProduct(category)" class="edit-btn">Edit</button>
+              <button (click)="deleteProduct(category.categoryId)" class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

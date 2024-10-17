@@ -1,0 +1,88 @@
+<div style="padding-top:70px;">
+    <nav class="navbar">
+      <div class="navbar-title">
+        <!-- <button *ngIf="userID" class="home-btn" [routerLink]="['/customer',userID]">
+          Home
+        </button> -->
+    
+        <!-- <button *ngIf="!userID" class="home-btn" routerLink="">
+          Home
+        </button> -->
+      </div>
+      <div class="navbar-buttons">
+          <button class="btn logout" *ngIf="userID" (click)="logOut()">
+             Logout
+          </button>
+          <!-- <button class="btn cart" *ngIf="userID" [routerLink]="['/customer/orders',userID]">
+            My Orders
+          </button> -->
+          
+          <button class="btn cartlogo" *ngIf="userID" [routerLink]="['/customer/cart',userID]">
+            <i class="fa fa-shopping-cart"></i><span class="cart-count">{{getTotalQuantity()}}</span>
+          </button>
+
+          <button *ngIf="!userID" class="btn login-btn" routerLink="/login">Login</button>
+          <button *ngIf="!userID" class="btn register-btn" routerLink="/register">Register</button>
+      </div>
+    </nav>
+    
+    <!-- <div style="text-align: center;">
+      <button *ngIf="userID" class="legendary-button" [routerLink]="['/customer', userID]">Back to Home</button>
+    
+      <button *ngIf="!userID" class="legendary-button" routerLink="">Back to Home</button>
+    </div> -->
+    
+    <div class="main-container">
+        <div class="product-container">
+          <!-- Product and User Information -->
+          <div class="image-container">
+            <img src="{{product.imageUrl}}" alt="image">
+          </div>
+          <div class="product-info-container">
+            <p class="product-name">{{product.productName}}</p>
+            <p class="product-desc">{{product.productDescription}}</p>
+            <!-- Conditionally display the element based on the presence of userID -->
+            <!-- <p *ngIf="userID" style="text-align: left;">
+              <i class="fa fa-map-marker"></i> Deliver to {{user.userName}} - {{user.address}}
+            </p> -->
+            <p class="product-prize">{{(product.price - product.discount) * quantity | currency:'INR'}}</p>
+          </div>
+          <!-- Quantity and Action Buttons -->
+          <div>
+            <label for="quantity">Quantity:</label>
+            <div class="quantity-control">
+              <button class="quantity-button" (click)="decreaseQuantity()">-</button>
+              <input type="number" id="quantity" [(ngModel)]="quantity" min="1" />
+              <button class="quantity-button" (click)="increaseQuantity()">+</button>
+            </div>
+            <button class="cart-button" (click)="addToCart()">Add to Cart</button>
+            <!-- <button class="cart-button">Add to Cart</button> -->
+            <!-- <button class="buy-button" (click)="openPaymentForm()">Buy</button> -->
+            <button class="buy-button">Buy</button>
+          </div>
+        </div>
+      </div>
+      
+    
+      
+      <!-- Success Animation Modal -->
+      <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+        <div class="success-content">
+          <div class="tick-mark">
+            <div class="circle">Done</div>
+          </div>
+          <p class="success-message">Order placed successfully!</p>
+        </div>
+      </div> -->
+    
+      <!-- Success Animation Modal -->
+    <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+      <div class="success-content">
+        <div class="tick-mark">
+          <div class="circle">{{ successMessage === 'Order placed successfully!' ? 'Done' : '' }}</div>
+        </div>
+        <p class="success-message">{{ successMessage }}</p>
+      </div>
+    </div> -->
+    </div>
+      

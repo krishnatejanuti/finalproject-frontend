@@ -1,0 +1,26 @@
+<div style="padding-top: 70px;">
+<div class="orders-container">
+    <h1 class="title">Order Summary</h1>
+    <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+            <h2>Order ID: {{ order.orderId }}</h2>
+            <p>User ID: {{ order.userId }}</p>
+            <p>Total Amount: {{ order.totalAmount.toFixed(2) | currency:'INR' }}</p>
+            <p>Status: <span [ngClass]="{'status-placed': order.status === 'PLACED'}">{{ getOrderStatus(order.status)}}</span></p>
+            <button *ngIf="order.status == 'ARRIVING'" class="edit-status-btn" (click)="editStatus(order)">Edit Status to Delivered</button>
+        </div>
+        <div class="order-items">
+            <h3>Items:</h3>
+            <div *ngFor="let item of order.items" class="order-item">
+                <img [src]="item.imageUrl" alt="Product Image" class="item-image" />
+                <div class="item-details">
+                    <p>Product ID: {{ item.productId }}</p>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Price: {{ item.price.toFixed(2) | currency:'INR' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
