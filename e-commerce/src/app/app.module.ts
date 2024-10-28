@@ -16,6 +16,8 @@ import { AdminCategorysComponent } from './components/admin-categorys/admin-cate
 import { UsersComponent } from './components/users/users.component';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { UserCartItemsComponent } from './components/user-cart-items/user-cart-items.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { UserCartItemsComponent } from './components/user-cart-items/user-cart-i
     AdminCategorysComponent,
     UsersComponent,
     AdminOrdersComponent,
-    UserCartItemsComponent
+    UserCartItemsComponent,
+    UserOrdersComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

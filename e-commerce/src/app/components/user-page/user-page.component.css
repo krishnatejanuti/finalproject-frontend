@@ -60,6 +60,10 @@
 .navbar-buttons .btn:hover,.home-btn:hover {
   transform: scale(1.05);
 }
+
+.navbar-buttons .cart {
+  background-color: #007bff;
+}
 /* .navbar-buttons .login-btn {
     background-color: #007bff;
     

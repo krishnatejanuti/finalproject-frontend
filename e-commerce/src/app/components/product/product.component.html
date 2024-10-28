@@ -1,23 +1,24 @@
 <div style="padding-top:70px;">
     <nav class="navbar">
       <div class="navbar-title">
-        <!-- <button *ngIf="userID" class="home-btn" [routerLink]="['/customer',userID]">
+        <button *ngIf="userID" class="home-btn" routerLink="/user">
           Home
-        </button> -->
+        </button>
     
-        <!-- <button *ngIf="!userID" class="home-btn" routerLink="">
+        <button *ngIf="!userID" class="home-btn" routerLink="">
           Home
-        </button> -->
+        </button>
       </div>
       <div class="navbar-buttons">
           <button class="btn logout" *ngIf="userID" (click)="logOut()">
              Logout
           </button>
-          <!-- <button class="btn cart" *ngIf="userID" [routerLink]="['/customer/orders',userID]">
+  
+          <button class="btn cart" *ngIf="userID" [routerLink]="['/user/orders',userID]">
             My Orders
-          </button> -->
+          </button>
           
-          <button class="btn cartlogo" *ngIf="userID" [routerLink]="['/customer/cart',userID]">
+          <button class="btn cartlogo" *ngIf="userID" [routerLink]="['/user/cartItems/',userID]">
             <i class="fa fa-shopping-cart"></i><span class="cart-count">{{getTotalQuantity()}}</span>
           </button>
 
@@ -58,31 +59,65 @@
             <button class="cart-button" (click)="addToCart()">Add to Cart</button>
             <!-- <button class="cart-button">Add to Cart</button> -->
             <!-- <button class="buy-button" (click)="openPaymentForm()">Buy</button> -->
-            <button class="buy-button">Buy</button>
+            <!-- <button class="buy-button">Buy</button> -->
           </div>
         </div>
       </div>
       
-    
-      
-      <!-- Success Animation Modal -->
-      <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
-        <div class="success-content">
-          <div class="tick-mark">
-            <div class="circle">Done</div>
-          </div>
-          <p class="success-message">Order placed successfully!</p>
-        </div>
+      <!-- Payment Modal -->
+  <div class="payment-modal" [ngClass]="{'show': showPaymentForm}">
+    <div class="payment-form">
+      <!-- <h3>Order Total</h3> -->
+      <p style="color:green;text-align: center;font-size: 18px;font-weight: bold;">Order Total : {{(product.price - product.discount) * quantity | currency:'INR'}}</p>
+      <h3>Select Payment Method</h3>
+      <div>
+        <label>
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="COD" (change)="updateButtonText()" class="radio-btn"> Cash on Delivery
+       
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="CreditCard" (change)="updateButtonText()" class="radio-btn"> Credit Card
+        </label>
+      </div>
+      <!-- <div>
+        <label>
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="CreditCard" (change)="updateButtonText()" class="radio-btn"> Credit Card
+        </label>
       </div> -->
-    
-      <!-- Success Animation Modal -->
-    <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
-      <div class="success-content">
-        <div class="tick-mark">
-          <div class="circle">{{ successMessage === 'Order placed successfully!' ? 'Done' : '' }}</div>
-        </div>
-        <p class="success-message">{{ successMessage }}</p>
+      
+      <div *ngIf="selectedPaymentMethod === 'CreditCard'">
+        <h4>Enter Credit Card Details</h4>
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" [(ngModel)]="cardNumber" placeholder="Enter your card number">
+        
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" [(ngModel)]="expiryDate" placeholder="MM/YY">
+        
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" [(ngModel)]="cvv" placeholder="Enter CVV">
       </div>
-    </div> -->
+      
+      <button (click)="processPayment()">{{paymentButtonText}}</button>
+      <button (click)="closePaymentForm()">Cancel</button>
     </div>
+  </div>
+  
+  <!-- Success Animation Modal -->
+  <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+    <div class="success-content">
+      <div class="tick-mark">
+        <div class="circle">Done</div>
+      </div>
+      <p class="success-message">Order placed successfully!</p>
+    </div>
+  </div> -->
+
+  <!-- Success Animation Modal -->
+<div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+  <div class="success-content">
+    <div class="tick-mark">
+      <div class="circle">{{ successMessage === 'Order placed successfully!' ? 'Done' : '' }}</div>
+    </div>
+    <p class="success-message">{{ successMessage }}</p>
+  </div>
+</div>
+</div>
       

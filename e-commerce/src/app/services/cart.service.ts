@@ -15,6 +15,10 @@ export class CartService
   getCartByUserID(): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8094/cart/getByUserId/${this.userId}`);
   }
+
+  removeItem(id:any):Observable<any>{
+    return this.http.delete(`http://localhost:8094/cart/remove/${this.userId}/${id}`);
+  }
 }
 
 

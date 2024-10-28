@@ -1,0 +1,155 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #004080;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-buttons .btn,.home-btn{
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative; /* Make the button a positioning context for the cart count */
+}
+
+.navbar-buttons .btn:hover,.home-btn:hover {
+    transform: scale(1.05);
+}
+
+.navbar-buttons .logout {
+  background-color: #ff0000;
+}
+
+.cart {
+  background-color: #007bff;
+}
+
+.cartlogo {
+  background-color: #0ad41b;
+}
+
+.home-btn {
+    background-color: #007bff;
+}
+
+
+.cart-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -9px;
+}
+
+.order-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-title {
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .order-status {
+    font-size: 1.5em;
+    color: #666;
+  }
+
+  .order-amount {
+    font-size: 1.5em;
+    color: green;
+  }
+
+  .edit-status-btn{
+    /* margin-left: 10px; */
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-status-btn:hover {
+    background-color: #218838;
+}
+  
+  .items-title {
+    font-size: 1.3em;
+    margin-top: 16px;
+    color: #444;
+  }
+  
+  .items-container {
+    display: grid; /* Change to grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 16px; /* Space between grid items */
+}
+
+.item-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox for item details */
+    flex-direction: column; /* Stack details vertically */
+}
+
+.item-info {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between details and image */
+    align-items: center; /* Center items vertically */
+}
+
+.item-image {
+    width: 100px; /* Adjusted width */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 16px; /* Space between details and image */
+}
+
+  
+  .item-details {
+    flex: 1; /* Allow details to take available space */
+  }
+  
+  .item-title {
+    font-size: 1.2em;
+    color: #222;
+  }
+  
+  .item-quantity {
+    font-size: 1.2em;
+    /* color: #555; */
+  }
+
+  .item-price{
+    font-size: 1.6em;
+    color:green;
+  }
+  

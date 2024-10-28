@@ -9,10 +9,13 @@
         <!-- <button class="btn login-btn" routerLink="/login">Login</button>
         <button class="btn register-btn" routerLink="/register">Register</button> -->
         <!-- <button class="btn logOut-btn" routerLink="/logout">Logout</button> -->
-        <button class="btn logout" *ngIf="userID" (click)="logOut()">
+        <button class="btn logout" *ngIf="UserId" (click)="logOut()">
           Logout
        </button>
-       <button class="cartlogo-btn" *ngIf="userID" [routerLink]="['/user/cartItems/',userID]">
+       <button class="btn cart" *ngIf="UserId" [routerLink]="['/user/orders',UserId]">
+        My Orders
+      </button>
+       <button class="cartlogo-btn" *ngIf="UserId" [routerLink]="['/user/cartItems/',UserId]">
         <i class="fa fa-shopping-cart"></i><span class="cartlogo-count">{{getTotalQuantity()}}</span>
       </button>
       </div>

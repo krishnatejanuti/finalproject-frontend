@@ -15,6 +15,10 @@ export class OrdersService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  getOrdersByUserId(userId: number): Observable<any> {
+    return this.http.get(`http://localhost:8095/order/getOrderUserId/${userId}`);
+  }
+
   postOrder(body:any):Observable<any> {
     return this.http.post<any>('http://localhost:8095/order/create',body)
   }

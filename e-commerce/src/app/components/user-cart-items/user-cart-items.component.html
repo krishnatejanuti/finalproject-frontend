@@ -16,14 +16,100 @@
       <p>Total Amount: <strong>${{ cartItems.totalAmount }}</strong></p>
     </div>
   </div> -->
+  <div style="padding-top:70px;">
+  <nav class="navbar">
+    <div class="navbar-title">
+      <button *ngIf="UserId" class="home-btn" routerLink="/user">
+        Home
+      </button>
+  
+      <button *ngIf="!UserId" class="home-btn" routerLink="">
+        Home
+      </button>
+    </div>
+    <div class="navbar-buttons">
+        <button class="btn logout" *ngIf="UserId" (click)="logOut()">
+           Logout
+        </button>
+        <button class="btn cart" *ngIf="UserId" [routerLink]="['/user/orders',UserId]">
+          My Orders
+        </button>
+        
+        <button class="btn cartlogo" *ngIf="UserId" [routerLink]="['/user/cartItems',UserId]">
+          <i class="fa fa-shopping-cart"></i><span class="cart-count">{{getTotalQuantity()}}</span>
+        </button>
+
+        <button *ngIf="!UserId" class="btn login-btn" routerLink="/login">Login</button>
+        <button *ngIf="!UserId" class="btn register-btn" routerLink="/register">Register</button>
+    </div>
+  </nav>
+
+  <div class="payment-modal" [ngClass]="{'show': showPaymentForm}">
+    <div class="payment-form">
+      <!-- <h3>Order Total</h3> -->
+      <!-- <p style="color:green;text-align: center;font-size: 18px;font-weight: bold;">Order Total : {{(product.price - product.discount) * quantity | currency:'INR'}}</p> -->
+      <h3>Select Payment Method</h3>
+      <div>
+        <label>
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="COD" (change)="updateButtonText()" class="radio-btn"> Cash on Delivery
+       
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="CreditCard" (change)="updateButtonText()" class="radio-btn"> Credit Card
+        </label>
+      </div>
+      <!-- <div>
+        <label>
+          <input type="radio" [(ngModel)]="selectedPaymentMethod" value="CreditCard" (change)="updateButtonText()" class="radio-btn"> Credit Card
+        </label>
+      </div> -->
+      
+      <div *ngIf="selectedPaymentMethod === 'CreditCard'">
+        <h4>Enter Credit Card Details</h4>
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" [(ngModel)]="cardNumber" placeholder="Enter your card number">
+        
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" [(ngModel)]="expiryDate" placeholder="MM/YY">
+        
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" [(ngModel)]="cvv" placeholder="Enter CVV">
+      </div>
+      
+      <button (click)="processPayment()">{{paymentButtonText}}</button>
+      <button (click)="closePaymentForm()">Cancel</button>
+    </div>
+  </div>
+  
+  <!-- Success Animation Modal -->
+  <!-- <div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+    <div class="success-content">
+      <div class="tick-mark">
+        <div class="circle">Done</div>
+      </div>
+      <p class="success-message">Order placed successfully!</p>
+    </div>
+  </div> -->
+
+  <!-- Success Animation Modal -->
+<div class="success-modal" [ngClass]="{'show': showSuccessAnimation}">
+  <div class="success-content">
+    <div class="tick-mark">
+      <div class="circle">{{ successMessage === 'Order placed successfully!' ? 'Done' : '' }}</div>
+    </div>
+    <p class="success-message">{{ successMessage }}</p>
+  </div>
+</div>
 
 <h2 class="legendary-title">My Cart</h2>
+<div style="text-align: center;">
+  <button  *ngIf="userCartItems.items.length > 0" class="buy-button" (click)="openPaymentForm()">Proceed To Buy</button>
+</div>
 <div class="cart-info">
   <p class="legendary-total-items">Total Items: <span style="color:red;">{{getTotalQuantity()}}</span></p>
-  <!-- <p class="legendary-total-items">Cart Total: <span style="color:red">{{overallTotalPrice | currency:'INR'}}</span></p>   -->
+  <p class="legendary-total-items">Cart Total: <span style="color:red">{{overallTotalPrice | currency:'INR'}}</span></p>  
 </div>
-<!-- <div *ngIf="userCartItems.length > 0; else emptyCart"> -->
-<div>
+
+<div *ngIf="userCartItems.items.length > 0; else emptyCart">
+<!-- <div> -->
 <div class="cart-container">
   <div class="cart-item" *ngFor="let item of userCartItems.items">
     <img class="product-image" src="{{item.imageUrl}}" alt="product image">
@@ -36,15 +122,15 @@
         <span class="quantity-display">{{item.quantity}}</span>
         <button class="quantity-button" (click)="increaseQuantity(item)">+</button>
       </div>
-      <p class="total-price">Total Price: {{item.totalPrice | currency:'INR'}}</p>
-      <!-- <button class="remove-btn" (click)="removeFromCart(item.cartID)">Remove from Cart</button> -->
-      <button class="remove-btn">Remove from Cart</button>
+      <p class="total-price">Total Price: {{item.price * item.quantity | currency:'INR'}}</p>
+      <button class="remove-btn" (click)="removeFromCart(item.productId)">Remove from Cart</button>
+      <!-- <button class="remove-btn">Remove from Cart</button> -->
     </div>
   </div>
 </div>
 </div>
-
-<!-- <ng-template #emptyCart>
+  <!-- </div> -->
+<ng-template #emptyCart>
   <div class="empty-cart-container">
     <div class="empty-cart-icon">
       <i class="fa fa-shopping-cart"></i>
@@ -52,8 +138,8 @@
     <div class="empty-cart-text">
       <p>Your cart is empty.</p>
       <p>Add some items to the cart to view them here!</p>
-      <a [routerLink]="['/customer',userID]" class="empty-cart-link">Browse Products</a>
+      <a routerLink="/user" class="empty-cart-link">Browse Products</a>
     </div>
   </div>
-</ng-template> -->
+</ng-template>
   

@@ -1,0 +1,47 @@
+<div style="padding-top:70px;">
+    <nav class="navbar">
+        <div class="navbar-title">
+          <button *ngIf="userID" class="home-btn" routerLink="/user">
+            Home
+          </button>
+      
+          <!-- <button *ngIf="!userID" class="home-btn" routerLink="">
+            Home
+          </button> -->
+        </div>
+        <div class="navbar-buttons">
+            <button class="btn logout" *ngIf="userID" (click)="logOut()">
+               Logout
+            </button>
+            <button class="btn cart" *ngIf="userID" [routerLink]="['/user/orders',userID]">
+              My Orders
+            </button>
+            
+            <button class="btn cartlogo" *ngIf="userID" [routerLink]="['/user/cartItems',userID]">
+              <i class="fa fa-shopping-cart"></i><span class="cart-count">{{getTotalQuantity()}}</span>
+              <!-- <i class="fa fa-shopping-cart"></i><span class="cart-count">0</span> -->
+            </button>
+    
+            
+        </div>
+      </nav>
+<div class="order-container" *ngFor="let order of userOrders">
+  <h2 class="order-title">Order ID: {{ order.orderId }}</h2>
+  <p class="order-status">Status: {{ order.status }}</p>
+  <p class="order-amount">Total Amount: {{ order.totalAmount | currency:'INR' }}</p>
+  <button *ngIf="order.status == 'ARRIVING'" class="edit-status-btn" (click)="editStatus(order)">Cancel the Order</button>
+  <h3 class="items-title">Items:</h3>
+  <div class="items-container">
+    <div class="item-card" *ngFor="let item of order.items">
+      <div class="item-info">
+        <div class="item-details">
+          <h4 class="item-title">Product ID: {{ item.productId }}</h4>
+          <p class="item-quantity">Quantity: {{ item.quantity }}</p>
+          <p class="item-price">Price: {{ item.price | currency:'INR' }}</p>
+        </div>
+        <img [src]="item.imageUrl" alt="Product Image" class="item-image" />
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -11,20 +11,25 @@ import { AdminCategorysComponent } from './components/admin-categorys/admin-cate
 import { UsersComponent } from './components/users/users.component';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { UserCartItemsComponent } from './components/user-cart-items/user-cart-items.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { AuthGuard } from './auth.guard';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'home', component:HomeComponent},
-  {path:'user', component: UserPageComponent},
-  {path:'admin', component:AdminPageComponent},
-  {path:'admin/products', component:AdminProductsComponent},
-  {path:'admin/categorys', component:AdminCategorysComponent},
-  {path:'admin/orders', component:AdminOrdersComponent},
-  {path:'admin/users', component:UsersComponent},
-  {path:'user/cartItems/:id', component:UserCartItemsComponent},
-  { path: 'product/:id', component: ProductComponent}
+  {path:'user', component: UserPageComponent,canActivate:[AuthGuard],data: { role: 'user' }},
+  {path:'admin', component:AdminPageComponent,canActivate:[AuthGuard],data: { role: 'admin' }},
+  {path:'admin/products', component:AdminProductsComponent,canActivate:[AuthGuard],data: { role: 'admin' }},
+  {path:'admin/categorys', component:AdminCategorysComponent,canActivate:[AuthGuard],data: { role: 'admin' }},
+  {path:'admin/orders', component:AdminOrdersComponent,canActivate:[AuthGuard],data: { role: 'admin' }},
+  {path:'admin/users', component:UsersComponent,canActivate:[AuthGuard],data: { role: 'admin' }},
+  {path:'user/orders/:id', component:UserOrdersComponent,canActivate:[AuthGuard],data: { role: 'user' }},
+  {path:'user/cartItems/:id', component:UserCartItemsComponent,canActivate:[AuthGuard],data: { role: 'user' }},
+  { path: 'product/:id', component: ProductComponent},
+  { path: 'unauthorized', component: UnauthorizedComponent},
 ];
 
 @NgModule({

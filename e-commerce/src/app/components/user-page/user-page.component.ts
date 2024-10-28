@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,7 +14,7 @@ export class UserPageComponent implements OnInit
  {
   myData: any;
   filteredProducts: any;
-  userID = localStorage.getItem('userId');
+  // userID = localStorage.getItem('userId');
   searchTerm: string = '';
 
   cartItems: any;
@@ -22,6 +22,7 @@ export class UserPageComponent implements OnInit
   UserId = localStorage.getItem('userId') || '';
 
   constructor(
+    private route: ActivatedRoute,
     private productService: ProductService,
     private http: HttpClient,
     private cartService: CartService,  // Inject CartService to fetch user's cart items
@@ -60,9 +61,7 @@ export class UserPageComponent implements OnInit
 
      if (this.UserId) {
       this.getCartItemsByUserId(this.UserId);
-    }
-
-     
+    }   
   }
 
   filterProductsByCategory(categoryID: number): void {
