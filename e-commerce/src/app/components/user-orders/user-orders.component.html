@@ -27,6 +27,7 @@
       </nav>
 <div class="order-container" *ngFor="let order of userOrders">
   <h2 class="order-title">Order ID: {{ order.orderId }}</h2>
+  <h2 class="order-title">Ordered Date & Time : {{ order.orderDate }}</h2>
   <p class="order-status">Status: {{ order.status }}</p>
   <p class="order-amount">Total Amount: {{ order.totalAmount | currency:'INR' }}</p>
   <button *ngIf="order.status == 'ARRIVING'" class="edit-status-btn" (click)="editStatus(order)">Cancel the Order</button>
